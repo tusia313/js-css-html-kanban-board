@@ -22,4 +22,26 @@ let tasks = [
 function createTask() {
     const taskCard = document.createElement('div')
     taskCard.classList.add('task-container')
+
+    const taskHeader = document.createElement('div')
+    taskHeader.classList.add('task-header')
+
+    const deleteIcon = document.createElement('p')
+    deleteIcon.textContent = '☓'
+
+    const taskTitle = document.createElement('p')
+    taskTitle.textContent = 'hi'
+
+    const taskDescriptionContainer = document.createElement('div')
+    taskDescriptionContainer.classList.add('task-description-container')
+
+    const taskDescription = document.createElement('p')
+    taskDescription.textContent = 'description'
+    
+    taskDescriptionContainer.append(taskDescription)
+    taskHeader.append(taskTitle, deleteIcon)
+    taskCard.append(taskHeader, taskDescriptionContainer)
+    backlogTasks.append(taskCard)
 }
+
+createTask()
