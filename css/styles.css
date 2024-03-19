@@ -8,10 +8,19 @@
 body {
     margin: 0;
     padding: 0;
+    background: #f1f1f1;
+    background-image: linear-gradient(90deg,
+            transparent 50px,
+            #ffb4b8 50px,
+            #ffb4b8 52px,
+            transparent 52px),
+        linear-gradient(#e1e1e1 0.1em, transparent 0.1em);
+    background-size: 100% 30px;
 }
 
 header {
     width: 100vw;
+    background: white !important;
     border-bottom: 0.5rem solid rgb(0, 0, 0);
     display: flex;
     justify-content: space-between;
@@ -71,9 +80,9 @@ header #description {
     border: 2px solid white;
 }
 
-section {
+/* section {
     width: 100%;
-    height: 76vh;
+    height: 100%;
     background: #f1f1f1;
     background-image: linear-gradient(90deg,
             transparent 50px,
@@ -82,7 +91,7 @@ section {
             transparent 52px),
         linear-gradient(#e1e1e1 0.1em, transparent 0.1em);
     background-size: 100% 30px;
-}
+} */
 
 section.column-container {
     display: flex;
@@ -110,6 +119,8 @@ section.column-container {
     background-color: rgb(96, 96, 192);
     color: white;
     padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: space-between;
 }
 
 .task-description-container {

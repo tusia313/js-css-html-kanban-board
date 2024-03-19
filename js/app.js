@@ -3,9 +3,9 @@ const backlogTasks = document.querySelector('#backlog .task-list')
 
 let tasks = [
     {
-        id : 0,
-        title : "Fix submit button",
-        description : "The submit button stop working, since the last release."
+        id: 0,
+        title: "Fix submit button",
+        description: "The submit button stop working, since the last release."
     },
     {
         id : 1,
@@ -19,24 +19,21 @@ let tasks = [
     },
 ]
 
-function createTask() {
+function createTask(taskId, title, description) {
     const taskCard = document.createElement('div')
-    taskCard.classList.add('task-container')
-
     const taskHeader = document.createElement('div')
-    taskHeader.classList.add('task-header')
-
     const deleteIcon = document.createElement('p')
-    deleteIcon.textContent = '☓'
-
     const taskTitle = document.createElement('p')
-    taskTitle.textContent = 'hi'
-
     const taskDescriptionContainer = document.createElement('div')
-    taskDescriptionContainer.classList.add('task-description-container')
-
     const taskDescription = document.createElement('p')
-    taskDescription.textContent = 'description'
+    
+    taskHeader.classList.add('task-header')
+    taskDescriptionContainer.classList.add('task-description-container')
+    taskCard.classList.add('task-container')
+    
+    taskTitle.textContent = title
+    taskDescription.textContent = description
+    deleteIcon.textContent = '☓'
     
     taskDescriptionContainer.append(taskDescription)
     taskHeader.append(taskTitle, deleteIcon)
@@ -44,4 +41,8 @@ function createTask() {
     backlogTasks.append(taskCard)
 }
 
-createTask()
+function addTasks() {
+    tasks.forEach( task => createTask(task.id, task.title, task.description))
+}
+
+addTasks()
