@@ -10,14 +10,14 @@ let tasks = [
         description: "The submit button stop working, since the last release."
     },
     {
-        id : 1,
-        title : "Change text in C and T's",
-        description : "Needs to be updating as per the i m p o r t a n t buisness meeting."
+        id: 1,
+        title: "Change text in C and T's",
+        description: "Needs to be updating as per the i m p o r t a n t buisness meeting."
     },
     {
-        id : 2,
-        title : "Change banner picture",
-        description : "Marketing has requested a new banner to be added for the website."
+        id: 2,
+        title: "Change banner picture",
+        description: "Marketing has requested a new banner to be added for the website."
     },
 ]
 
@@ -33,7 +33,7 @@ function createTask(taskId, title, description) {
     const taskTitle = document.createElement('p')
     const taskDescriptionContainer = document.createElement('div')
     const taskDescription = document.createElement('p')
-    
+
     taskHeader.classList.add('task-header')
     taskDescriptionContainer.classList.add('task-description-container')
     taskCard.classList.add('task-container')
@@ -46,7 +46,7 @@ function createTask(taskId, title, description) {
     taskCard.setAttribute('task-id', taskId)
 
     taskCard.addEventListener('dragstart', dragStart)
-    
+
     taskDescriptionContainer.append(taskDescription)
     taskHeader.append(taskTitle, deleteIcon)
     taskCard.append(taskHeader, taskDescriptionContainer)
@@ -57,12 +57,31 @@ function addTasks() {
     tasks.forEach((task) => createTask(task.id, task.title, task.description))
 }
 
+function addColor(column) {
+    let color 
+    switch (column) {
+        case 'backlog' : 
+            color = 'rgb(255, 180, 184)'
+            break
+        case 'doing':
+            color = 'rgb(255, 165, 0)'
+            break
+        case 'done' :
+            color = 'rgb(50, 222, 132)'
+            break
+        case 'discard' :
+            color = 'rgb(192,192,192)'
+        default:
+            color = 'rgb(232, 232, 232)'
+    }
+    return color
+}
+
 addTasks()
 
 let elementBeingDragged
 
 function dragStart() {
-    console.log(this)
     elementBeingDragged = this
 }
 
@@ -71,7 +90,8 @@ function dragOver(e) {
 }
 
 function dragDrop() {
-    console.log(this)
+    let columnId = this.parentNode.id
+    elementBeingDragged.firstChild.style.backgroundColor = addColor(columnId)
     this.append(elementBeingDragged)
 }
 
