@@ -3,6 +3,7 @@ const backlogTasks = document.querySelector('#backlog .task-list')
 const titleInput = document.querySelector('#title')
 const descriptionInput = document.querySelector('#description')
 const submitButton = document.querySelector('#submit-button')
+const errorContainer = document.querySelector('.error-container')
 
 let tasks = [
     {
@@ -59,23 +60,32 @@ function addTasks() {
 }
 
 function addColor(column) {
-    let color 
+    let color
     switch (column) {
-        case 'backlog' : 
+        case 'backlog':
             color = 'rgb(255, 180, 184)'
             break
         case 'doing':
             color = 'rgb(255, 165, 0)'
             break
-        case 'done' :
+        case 'done':
             color = 'rgb(50, 222, 132)'
             break
-        case 'discard' :
+        case 'discard':
             color = 'rgb(192,192,192)'
         default:
             color = 'rgb(232, 232, 232)'
     }
     return color
+}
+
+function showError(message) {
+    const errorMessage = document.createElement('p')
+    errorMessage.textContent = message
+    errorContainer.append(errorMessage)
+    setTimeout(() => {
+        errorContainer.textContent = ''
+    }, 2000)
 }
 
 addTasks()
@@ -98,7 +108,7 @@ function dragDrop() {
 
 function addTask(e) {
     e.preventDefault()
-    const filteredTitles = tasks.filter( task => {
+    const filteredTitles = tasks.filter(task => {
         return task.title === titleInput.value
     })
 
@@ -112,12 +122,13 @@ function addTask(e) {
             description: descriptionInput.value
         })
         createTask(newId.value, titleInput.value, descriptionInput.value)
-        titleInput.value =''
-        descriptionInput.value =''
+        titleInput.value = ''
+        descriptionInput.value = ''
     } else {
         console.log('error')
-    } console.log(tasks)
-} 
+        showError('The title must be unique !')
+    }
+}
 
 submitButton.addEventListener('click', addTask)
 
