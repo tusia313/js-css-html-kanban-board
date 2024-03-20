@@ -2,9 +2,7 @@ const taskLists = document.querySelectorAll('.task-list')
 const backlogTasks = document.querySelector('#backlog .task-list')
 const titleInput = document.querySelector('#title')
 const descriptionInput = document.querySelector('#description')
-
-console.log(titleInput, descriptionInput)
-
+const submitButton = document.querySelector('#submit-button')
 
 let tasks = [
     {
@@ -98,21 +96,29 @@ function dragDrop() {
     this.append(elementBeingDragged)
 }
 
-function addTask() {
+function addTask(e) {
+    e.preventDefault()
     const filteredTitles = tasks.filter( task => {
         return task.title === titleInput.value
     })
 
-    if (!filteredTitles.lenght) {
+    console.log(filteredTitles)
+
+    if (!filteredTitles.length) {
         const newId = tasks.length
         tasks.push({
             id: newId,
             title: titleInput.value,
             description: descriptionInput.value
         })
+        createTask(newId.value, titleInput.value, descriptionInput.value)
+        titleInput.value =''
+        descriptionInput.value =''
     } else {
         console.log('error')
-    }
-}
-addTask()
+    } console.log(tasks)
+} 
+
+submitButton.addEventListener('click', addTask)
+
 
