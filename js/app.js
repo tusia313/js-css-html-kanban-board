@@ -6,21 +6,21 @@ const submitButton = document.querySelector('#submit-button')
 const errorContainer = document.querySelector('.error-container')
 
 let tasks = [
-    {
-        id: 0,
-        title: "Fix submit button",
-        description: "The submit button stop working, since the last release."
-    },
-    {
-        id: 1,
-        title: "Change text in C and T's",
-        description: "Needs to be updating as per the i m p o r t a n t buisness meeting."
-    },
-    {
-        id: 2,
-        title: "Change banner picture",
-        description: "Marketing has requested a new banner to be added for the website."
-    },
+    // {
+    //     id: 0,
+    //     title: "Fix submit button",
+    //     description: "The submit button stop working, since the last release."
+    // },
+    // {
+    //     id: 1,
+    //     title: "Change text in C and T's",
+    //     description: "Needs to be updating as per the i m p o r t a n t buisness meeting."
+    // },
+    // {
+    //     id: 2,
+    //     title: "Change banner picture",
+    //     description: "Marketing has requested a new banner to be added for the website."
+    // },
 ]
 
 taskLists.forEach((taskList) => {
@@ -48,6 +48,7 @@ function createTask(taskId, title, description) {
     taskCard.setAttribute('task-id', taskId)
 
     taskCard.addEventListener('dragstart', dragStart)
+    deleteIcon.addEventListener('click', deleteTask)
 
     taskDescriptionContainer.append(taskDescription)
     taskHeader.append(taskTitle, deleteIcon)
@@ -131,5 +132,20 @@ function addTask(e) {
 }
 
 submitButton.addEventListener('click', addTask)
+
+function deleteTask() {
+    const headerTitle = this.parentNode.firstChild.textContent
+    // teraz wybieramy jedno zadanie thx to filter
+    const filterTask = tasks.filter(task => {
+        return headerTitle === task.title
+    })
+    // [0] to dlatego, żeby wyświelić pierwsze zadanie w zadaiu - co jak sama widzisz oznacza, że zawsze jest jego ( możesz to zobaczyc dając console.log(filterTask))
+    const newTask = tasks.filter(task => {
+        return task !== filterTask[0]
+    })
+    // nadpisanie istenijących zadań, jak tego nie zrobimy to zobaczysz w konsoli - zadania "tasks" będą niezmienne 
+    tasks = newTask
+    this.parentNode.parentNode.remove()
+}
 
 

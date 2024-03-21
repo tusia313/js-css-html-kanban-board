@@ -98,7 +98,7 @@ section.column-container {
 .task-list {
     width: 100%;
     height: 100%;
-  }
+}
 
 .task-container {
     background-color: white;
@@ -111,7 +111,7 @@ section.column-container {
 
 .task-header {
     background-color: rgb(255, 180, 184);
-    
+
     color: white;
     padding: 0.5rem 1rem;
     display: flex;
