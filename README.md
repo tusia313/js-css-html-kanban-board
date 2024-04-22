@@ -12,7 +12,7 @@ Blank space at teh beginig
 ![first page](./img/screen_2.png)
 
 can be filled with task added in form at the right corner and dragged to a proper column.
-![secondt page](./img/screen_3.png)
+![secondt page](./img/screen_1.png)
 
 ## 🤓 Technologies
 
