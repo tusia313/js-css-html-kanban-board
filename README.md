@@ -8,11 +8,9 @@
 To-do list, but developed, help me practicing OOP (finally!), methods/properties of nodes and drag events.
 
 ## 🤓 First look 
-Blank space at teh beginig 
-![first page](./img/screen_2.png)
+Blank space at the beginig can be filled with task added in form at the right corner and dragged to a proper column.
 
-can be filled with task added in form at the right corner and dragged to a proper column.
-![secondt page](./img/screen_1.png)
+![first page](./img/screen_2.png)
 
 ## 🤓 Technologies
 
